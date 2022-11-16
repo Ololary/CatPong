@@ -29,18 +29,22 @@ namespace CatPong
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.background = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.gameball = new System.Windows.Forms.PictureBox();
             this.gamepanel = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.result = new System.Windows.Forms.Label();
             this.background.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gamepanel)).BeginInit();
             this.SuspendLayout();
             // 
             // background
             // 
-            this.background.Controls.Add(this.pictureBox2);
+            this.background.Controls.Add(this.result);
+            this.background.Controls.Add(this.gameball);
             this.background.Controls.Add(this.gamepanel);
             this.background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.background.Location = new System.Drawing.Point(0, 0);
@@ -49,15 +53,15 @@ namespace CatPong
             this.background.Size = new System.Drawing.Size(933, 525);
             this.background.TabIndex = 0;
             // 
-            // pictureBox2
+            // gameball
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(351, 223);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(60, 67);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.gameball.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameball.BackgroundImage")));
+            this.gameball.Location = new System.Drawing.Point(349, 223);
+            this.gameball.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gameball.Name = "gameball";
+            this.gameball.Size = new System.Drawing.Size(70, 69);
+            this.gameball.TabIndex = 1;
+            this.gameball.TabStop = false;
             // 
             // gamepanel
             // 
@@ -69,6 +73,21 @@ namespace CatPong
             this.gamepanel.TabIndex = 0;
             this.gamepanel.TabStop = false;
             // 
+            // timer
+            // 
+            this.timer.Interval = 1;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // result
+            // 
+            this.result.AutoSize = true;
+            this.result.Font = new System.Drawing.Font("Lucida Sans Unicode", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.result.Location = new System.Drawing.Point(840, 9);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(151, 28);
+            this.result.TabIndex = 1;
+            this.result.Text = "Результат: 0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,8 +98,10 @@ namespace CatPong
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.background.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.background.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameball)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gamepanel)).EndInit();
             this.ResumeLayout(false);
 
@@ -90,7 +111,9 @@ namespace CatPong
 
         private System.Windows.Forms.Panel background;
         private System.Windows.Forms.PictureBox gamepanel;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox gameball;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label result;
     }
 }
 
