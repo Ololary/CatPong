@@ -31,7 +31,12 @@ namespace CatPong
             Bounds = Screen.PrimaryScreen.Bounds;
             //устанавливаем расположение игровой котопанели относительно нижней части бэкграунда
             gamepanel.Top = background.Bottom - (background.Bottom / 7);
-            
+            loselable.Visible = false;
+            loselable.Left = background.Width / 2 - loselable.Width / 2;
+            loselable.Top = background.Height / 2 - loselable.Height / 2;
+            restartlable.Visible = false;
+            restartlable.Left = background.Width / 3 - loselable.Width / 2;
+            loselable.Top = background.Height / 3 - loselable.Height / 2;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -39,6 +44,18 @@ namespace CatPong
             if (e.KeyCode==Keys.Escape)
             {
                 Close();
+            }
+            if (e.KeyCode==Keys.Enter)
+            {
+                gameball.Top = 50;
+                gameball.Left = 70;
+                speed_vertical = 3;
+                speed_horizontal = 3;
+                score = 0;
+                loselable.Visible = false;
+                restartlable.Visible = false;
+                timer.Enabled = true;
+                result.Text = "Результат: " + score.ToString();
             }
         }
 
@@ -62,6 +79,8 @@ namespace CatPong
             }
             if (gameball.Bottom >= background.Bottom)
             {
+                loselable.Visible = true;
+                restartlable.Visible = true;
                 timer.Enabled = false;
             }
             if (gameball.Bottom>=gamepanel.Top&&gameball.Bottom <=gamepanel.Bottom
@@ -70,9 +89,10 @@ namespace CatPong
                 speed_horizontal += 1;
                 speed_vertical += 1;
                 speed_vertical *= -1;
-                score = +1;
+                score += 100;
                 result.Text = "Результат: " + score.ToString();
             }
+           
         }
     }
 }

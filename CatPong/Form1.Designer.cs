@@ -36,6 +36,8 @@ namespace CatPong
             this.gamepanel = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.result = new System.Windows.Forms.Label();
+            this.loselable = new System.Windows.Forms.Label();
+            this.restartlable = new System.Windows.Forms.Label();
             this.background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gameball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gamepanel)).BeginInit();
@@ -43,6 +45,8 @@ namespace CatPong
             // 
             // background
             // 
+            this.background.Controls.Add(this.restartlable);
+            this.background.Controls.Add(this.loselable);
             this.background.Controls.Add(this.result);
             this.background.Controls.Add(this.gameball);
             this.background.Controls.Add(this.gamepanel);
@@ -80,13 +84,34 @@ namespace CatPong
             // 
             // result
             // 
+            this.result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result.AutoSize = true;
             this.result.Font = new System.Drawing.Font("Lucida Sans Unicode", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.result.Location = new System.Drawing.Point(840, 9);
+            this.result.Location = new System.Drawing.Point(710, 9);
             this.result.Name = "result";
             this.result.Size = new System.Drawing.Size(151, 28);
             this.result.TabIndex = 1;
             this.result.Text = "Результат: 0";
+            // 
+            // loselable
+            // 
+            this.loselable.AutoSize = true;
+            this.loselable.Font = new System.Drawing.Font("Microsoft YaHei", 30.45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loselable.Location = new System.Drawing.Point(308, 278);
+            this.loselable.Name = "loselable";
+            this.loselable.Size = new System.Drawing.Size(432, 54);
+            this.loselable.TabIndex = 2;
+            this.loselable.Text = "КЛУБОК ПОТЕРЯН!";
+            // 
+            // restartlable
+            // 
+            this.restartlable.AutoSize = true;
+            this.restartlable.Font = new System.Drawing.Font("Microsoft JhengHei Light", 25.35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.restartlable.Location = new System.Drawing.Point(-7, 332);
+            this.restartlable.Name = "restartlable";
+            this.restartlable.Size = new System.Drawing.Size(987, 39);
+            this.restartlable.TabIndex = 3;
+            this.restartlable.Text = "Для выхода нажмите ESC, для продолжения нажмите ENTER";
             // 
             // Form1
             // 
@@ -114,6 +139,8 @@ namespace CatPong
         private System.Windows.Forms.PictureBox gameball;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label result;
+        private System.Windows.Forms.Label loselable;
+        private System.Windows.Forms.Label restartlable;
     }
 }
 
